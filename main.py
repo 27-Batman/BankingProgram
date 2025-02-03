@@ -1,13 +1,30 @@
 # Python Banking Program
 
 def show_blc():
-    pass
+    print(f"YOur balance is ${balance:.2f}")
 
 def deposit():
-    pass
+    amount = float(input("Enter the amount you want to deposit: "))
+
+    if amount <= 0:
+        print("You cannot deposit 0! ")
+        return 0
+    else:
+        return amount
 
 def withdraw():
-    pass
+    amount = float(input("Enter the amount you want to withdraw: "))
+
+    if amount > balance:
+        print("Insufficient funds ")
+        return 0
+    elif amount <= 0:
+        print("Amount must be greater than 0 ")
+        return 0
+    else:
+        print(f"The amount ${amount} has been withdrawn.")
+        return amount
+
 
 balance = 0
 is_running = True
@@ -24,9 +41,9 @@ while is_running:
     if choice == "1":
         show_blc()
     elif choice == "2":
-        deposit()
+        balance += deposit()
     elif choice == "3":
-        withdraw()
+        balance -= withdraw()
     elif choice == "4":
         is_running = False
     else:
